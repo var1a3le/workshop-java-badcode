@@ -99,4 +99,44 @@ class RegisterBusinessTest {
         int actual = registerBusiness.register(new speakerImpl(), mock);
         assertEquals(2, actual);
     }
+
+    @Test
+    @DisplayName("<= 1")
+    public void getFeeCaseLessThan1() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        int actual = registerBusiness.getFee(1);
+        assertEquals(500, actual);
+    }
+
+    @Test
+    @DisplayName("<= 3")
+    public void getFeeCaseLessThan3() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        int actual = registerBusiness.getFee(3);
+        assertEquals(250, actual);
+    }
+
+    @Test
+    @DisplayName("<= 5")
+    public void getFeeCaseLessThan5() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        int actual = registerBusiness.getFee(5);
+        assertEquals(100, actual);
+    }
+
+    @Test
+    @DisplayName("<= 9")
+    public void getFeeCaseLessThan9() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        int actual = registerBusiness.getFee(9);
+        assertEquals(50, actual);
+    }
+
+    @Test
+    @DisplayName("> 9")
+    public void getFeeCaseMore9() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        int actual = registerBusiness.getFee(10);
+        assertEquals(0, actual);
+    }
 }
