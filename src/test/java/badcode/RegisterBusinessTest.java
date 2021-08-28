@@ -55,7 +55,7 @@ class RegisterBusinessTest {
     }
 
     @Test
-    @DisplayName("Domain invalid")
+    @DisplayName("Domain incorrect")
     public void case04() {
         RegisterBusiness registerBusiness = new RegisterBusiness();
         Speaker mock = new Speaker();
@@ -71,8 +71,24 @@ class RegisterBusinessTest {
     }
 
     @Test
-    @DisplayName("Cannot Save")
+    @DisplayName("Domain invalid")
     public void case05() {
+        RegisterBusiness registerBusiness = new RegisterBusiness();
+        Speaker mock = new Speaker();
+        mock.setFirstName("FirstName");
+        mock.setLastName("Lastname");
+        mock.setEmail("test@test@@.com");
+        try {
+            registerBusiness.register(null, mock);
+            fail();
+        } catch (DomainEmailInvalidException e) {
+            //
+        }
+    }
+
+    @Test
+    @DisplayName("Cannot Save")
+    public void case06() {
         RegisterBusiness registerBusiness = new RegisterBusiness();
         Speaker mock = new Speaker();
         mock.setFirstName("FirstName");
@@ -89,7 +105,7 @@ class RegisterBusinessTest {
 
     @Test
     @DisplayName(" Save")
-    public void case06() {
+    public void case07() {
         RegisterBusiness registerBusiness = new RegisterBusiness();
         Speaker mock = new Speaker();
         mock.setFirstName("FirstName");
